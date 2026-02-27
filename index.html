@@ -1095,7 +1095,7 @@
         </div>
 
         <div class="footer">
-            ✨ سینما در جیب شما | طراحی اختصاصی ✨
+            « SensiGroup | Created By: SaSha »
         </div>
     </main>
 
@@ -1132,8 +1132,8 @@
             // ===== نوتیفیکیشن =====
             let notificationPanelOpen = false;
             const notifications = [
-                { id: 1, type: 'film', title: 'فیلم جدید', message: 'فیلم "اوپنهایمر" به کانال اضافه شد', read: false, time: new Date() },
-                { id: 2, type: 'music', title: 'آهنگ جدید', message: 'آهنگ "شهر خاموش" منتشر شد', read: false, time: new Date() }
+                { id: 1, type: 'film', title: 'فیلم جدید', message: 'فیلم "دراکولا" به کانال اضافه شد', read: false, time: new Date() },
+                { id: 2, type: 'music', title: 'آهنگ جدید', message: 'آلبوم "میراث" منتشر شد', read: false, time: new Date() 
             ];
 
             function updateNotificationBadge() {
@@ -1195,9 +1195,9 @@
 
             // ===== نظرات =====
             let comments = JSON.parse(localStorage.getItem('cinemaComments')) || [
-                { name: 'آرین', text: 'چه هدر سینمایی فوق‌العاده‌ای! گرافیک‌ها عالی شدن', date: '۱۴۰۲/۱۲/۱۰' },
-                { name: 'نازنین', text: 'فیلم اوپنهایمر رو از کانالتون دیدم. ممنون', date: '۱۴۰۲/۱۲/۰۹' },
-                { name: 'کیان', text: 'این آیکون‌های فیلم و آهنگ گرافیکی خفن شدن', date: '۱۴۰۲/۱۲/۰۸' }
+                { name: 'mmd', text: 'چه خفن شده حاجی ایوللل', date: '۱۴۰۲/۱۲/۱۰' },
+                { name: 'Aynaz', text: 'فیلم اوپنهایمرو از کانالتون دیدم. ممنون', date: '۱۴۰۲/۱۲/۰۹' },
+                { name: 'Ali🇦🇷', text: 'این آیکون‌های فیلم و آهنگ گرافیکی خفن شدن', date: '۱۴۰۲/۱۲/۰۸' }
             ];
 
             function renderComments() {
