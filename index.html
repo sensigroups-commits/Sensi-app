@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Sensi Web</title>
     <style>
+        /* ===== فونت ایران سنس بولد ===== */
+        @font-face {
+            font-family: 'IRANSans Bold';
+            src: url('https://cdn.fontcdn.ir/Fonts/IRANSansWeb_Bold.woff2') format('woff2'),
+                 url('https://cdn.fontcdn.ir/Fonts/IRANSansWeb_Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* ===== فونت اینترو بولد ===== */
+        @font-face {
+            font-family: 'Intro Bold';
+            src: url('https://db.onlinewebfonts.com/t/6d5b3a1c2c7a9d3b4e5f6g7h8i9j0k1l2m3n4o5.woff2') format('woff2'),
+                 url('https://db.onlinewebfonts.com/t/6d5b3a1c2c7a9d3b4e5f6g7h8i9j0k1l2m3n4o5.woff') format('woff');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Vazir', 'Segoe UI', system-ui, sans-serif;
+            /* فونت پیش‌فرض: اینترو بولد برای انگلیسی، ایران سنس برای فارسی */
+            font-family: 'Intro Bold', 'IRANSans Bold', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         /* ===== متغیرهای تم ===== */
@@ -111,7 +132,7 @@
             text-shadow: 0 0 10px var(--accent-gold);
         }
 
-        /* ===== دکمه دارک/لایت ثابت (همون استایل قبلی) ===== */
+        /* ===== دکمه دارک/لایت ===== */
         .theme-switch-wrapper {
             display: flex;
             background: var(--icon-bg);
@@ -194,7 +215,7 @@
             transform: rotate(0) scale(1.15);
         }
 
-        /* ===== نوتیفیکیشن (رفع مشکل کج شدن) ===== */
+        /* ===== نوتیفیکیشن ===== */
         .notification-bell {
             cursor: pointer;
             position: relative;
@@ -223,17 +244,14 @@
             transition: transform 0.3s ease;
         }
 
-        /* هاور باعث کج شدن میشه */
         .bell-icon:hover svg {
             transform: rotate(15deg);
         }
 
-        /* بعد از کلیک، هیچ transform اضافه‌ای نداریم */
         .notification-bell:active svg {
             transform: rotate(0deg);
         }
 
-        /* حتی اگر پنل باز باشه، زنگوله صاف می‌مونه */
         .notification-panel.show + .bell-icon svg,
         .notification-bell.open svg {
             transform: rotate(0deg);
@@ -380,7 +398,7 @@
             margin-top: 4px;
         }
 
-        /* ===== بقیه استایل‌ها (دقیقاً مثل قبل) ===== */
+        /* ===== بقیه استایل‌ها ===== */
         .cinema-hero {
             position: relative;
             width: 100%;
@@ -890,7 +908,7 @@
             <span class="header-logo">SENSI WEB</span>
         </div>
         <div class="header-left">
-            <!-- نوتیفیکیشن (رفع شده) -->
+            <!-- نوتیفیکیشن -->
             <div class="notification-bell" id="notificationBell">
                 <div class="bell-icon">
                     <svg viewBox="0 0 24 24">
@@ -901,7 +919,7 @@
                 </div>
             </div>
             
-            <!-- دکمه دارک/لایت (همون قبلی) -->
+            <!-- دکمه دارک/لایت -->
             <div class="theme-switch-wrapper">
                 <div class="theme-switch">
                     <button class="theme-btn" id="lightThemeBtn" title="تم روشن">
@@ -933,13 +951,8 @@
             <h3>اعلان‌ها</h3>
             <button id="closeNotificationPanel">✕</button>
         </div>
-        <div class="notification-list" id="notificationList">
-            <!-- نوتیفیکیشن‌ها با جاوااسکریپت پر می‌شوند -->
-        </div>
+        <div class="notification-list" id="notificationList"></div>
     </div>
-
-    <!-- ===== کانتینر نوتیفیکیشن‌های سریع (اختیاری) ===== -->
-    <div class="toast-container" id="toastContainer"></div>
 
     <!-- ===== هدر سینمایی ===== -->
     <header class="cinema-hero" id="heroHeader">
@@ -957,13 +970,13 @@
         <div class="hero-content" id="heroContent">
             <h1 class="glow-title">SENSI</h1>
             <div class="subtitle">Cinematic Experience</div>
-            <div class="hero-badge">مطالب مفید</div>
+            <div class="hero-badge">به سنسی‌اپ خوش‌اومدی</div>
         </div>
     </header>
 
     <!-- محتوای اصلی -->
     <main class="content">
-        <h2 class="section-title">🔥 آخرین آثار</h2>
+        <h2 class="section-title">جدیدترین‌ها</h2>
         
         <!-- گرید کارت‌ها -->
         <div class="cards-grid" id="cardsGrid">
@@ -1133,7 +1146,7 @@
             let notificationPanelOpen = false;
             const notifications = [
                 { id: 1, type: 'film', title: 'فیلم جدید', message: 'فیلم "دراکولا" به کانال اضافه شد', read: false, time: new Date() },
-                { id: 2, type: 'music', title: 'آهنگ جدید', message: 'آلبوم "میراث" منتشر شد', read: false, time: new Date() 
+                { id: 2, type: 'music', title: 'آهنگ جدید', message: 'آلبوم "میراث" منتشر شد', read: false, time: new Date() }
             ];
 
             function updateNotificationBadge() {
